@@ -89,6 +89,7 @@ while poziom not in [1, 2, 3]:
         print("Poziom trudności niedozwolony")
 MAX_ZLE = ILOSC_ZYC_POZIOM[poziom]
 print(f"Masz {MAX_ZLE} mozliwosci niepoprawnych odpowiedzi. Po przekroczeniu tej liczby przegrywasz.")
+print("ZACZYNAMY")
 
 rozwiazanie_doskonala = False
 while rozwiazanie_doskonala == False:
