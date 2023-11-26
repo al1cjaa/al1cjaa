@@ -5,6 +5,11 @@ ZLE = 0
 MAX_ZLE = 10
 PIERWSZA_ZAKRES = 100
 
+ILOSC_ZYC_POZIOM = {
+    1: 10,
+    2: 5,
+    3: 2
+}
 wspolczynniki = {
     1: [1, 5, 6],
     2: [-1, 5, -6],
@@ -58,12 +63,65 @@ def czy_pierwsza(x):
     return pierwsza
 
 
+def czy_doskonala(x):
+    suma_dzielnikow = 0
+    for i in range(1, x):
+        if x % i == 0:
+            suma_dzielnikow += i
+    if suma_dzielnikow == x:
+        return True
+    else:
+        return False
+
+def welcome_message():
+    print("Podaj nazwę swojego bohatera: ")
+    nazwa = input()
+    print(f"{nazwa} witaj w grze!")
+
+welcome_message()
+
+poziom = 0
+while poziom not in [1, 2, 3]:
+    print("Wybierz poziom trudności gry:\n1-łatwy\n2-średni\n3-trudny")
+    poziom = input()
+    poziom = int(poziom)
+    if poziom not in [1, 2, 3]:
+        print("Poziom trudności niedozwolony")
+MAX_ZLE = ILOSC_ZYC_POZIOM[poziom]
+print(f"Masz {MAX_ZLE} mozliwosci niepoprawnych odpowiedzi. Po przekroczeniu tej liczby przegrywasz.")
+
+rozwiazanie_doskonala = False
+while rozwiazanie_doskonala == False:
+    doskonala_rand = random.randint(1, 50)
+    print(f"Czy liba {doskonala_rand} jest liczba doskonala? jesli tak wpisz w konsoli 1, w przeciwnym przypadku wpisz 0")
+    user_input = input()
+    user_input = int(user_input)
+    if czy_doskonala(doskonala_rand) == True and user_input == 1:
+        rozwiazanie_doskonala = True
+        print("To dobre rozwiazanie")
+        POPRAWNE += 1
+    elif czy_doskonala(doskonala_rand) == False and user_input == 0:
+        rozwiazanie_doskonala = True
+        print("To dobre rozwiazanie")
+        POPRAWNE += 1
+    else:
+        ZLE += 1
+        if ZLE == MAX_ZLE:
+            print("Wykorzystales wszystkie szanse. Przegrales gre.")
+            exit()
+        else:
+            print(f"Zle rozwiazanie. Sprobuj jeszcze raz. Masz jeszcze {MAX_ZLE - ZLE} szans.")
+
+
+
 rozwiazanie_podzielne = False
 while rozwiazanie_podzielne == False:
     liczby = generuj_liczby(10)
     print(f"Z podanych liczb {liczby} wpisz pozycje tych liczb (zaczynajac od 0), które są podzielne przez 3. Poszczegolne liczby oddziel spacja")
     user_input = input()
+    user_input = user_input.strip() # usuwa białe znaki z końca inputu
     user_input = user_input.split(" ")
+    print(user_input)
     wszystkie_podzielne = True
     user_input = [int(x) for x in user_input]
     print(user_input)
@@ -217,3 +275,5 @@ while rozwiazanie_nwd == False:
             exit()
         else:
             print(f"Zle rozwiazanie. Sprobuj jeszcze raz. Masz jeszcze {MAX_ZLE - ZLE} szans.")
+
+print(f"Gratulujacje! Ukończyłeś grę. Procent poprawnych odpowiedzi to {POPRAWNE/(POPRAWNE+ZLE)*100}%")
