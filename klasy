@@ -1,0 +1,40 @@
+classmethod 
+
+class Laptop:
+    def __init__(self, pamiec_RAM, model, marka):
+        self.pamiec_RAM = pamiec_RAM
+        self.model = model
+        self.marka = marka
+    
+    def wyswietl_info(self):
+        print(f"Laptop o pamięci {self.pamiec_RAM}, model {self.model}, o marce {self.marka}")
+        
+laptop = Laptop("8GB", "Inspiron.155000", "Dell")
+laptop.wyswietl_info()
+
+
+class Czlowiek:
+    def _init_(self, imie, nazwisko,wiek):
+        self.imie = imie
+        self.nazwisko = nazwisko
+        self.wiek = wiek
+    
+    def wyswietl_info(self):
+        print(f"Czlowiek o imieniu{self.imie}, nazwisku {self.naziwsko},i  wieku {self.wiek}")
+
+czlowiek = Czlowiek("Alicja", "Zawadzka", "15")
+czlowiek.wyswietl_info()
+
+
+
+class Czolg:
+    def _init_(self, moc, model, marka):
+        self.moc = moc
+        self.model = model
+        self.marka = marka
+        
+    def wyswietl_info(self):
+        print(f"Czolg o mocy {self.moc}, model {self.model}, i marce {self.marka} ")
+
+czolg = Czolg("1600 KM", "2A4", "leopard")
+czolg.wyswietl_info()
