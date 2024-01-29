@@ -1,0 +1,161 @@
+import random 
+
+from dictionary.meinD import słownik1, słownik2, słownik3, edycja, biblioteka_informacje
+from dictionary.meinD import (słownik1, słownik2, słownik3, edycja, biblioteka_informacje, usuwanie, edytuj_wydanie)
+
+ksiazka1 = {
+    "autor": "Henryk Sienkiewicz",
+    "tytuł": "Quo vadis",
+    "gatunek": "powieść historyczna",
+    "liczbaStron": [472],
+    "rokWydania": [2021],
+    "wydawnictwo": ["Greg"]
+}
+
+
+ksiazka2 = {
+    "autor": "Charles Dickens",
+    "tytuł": "Opowieść wigilijna",
+    "gatunek": "opowiadanie",
+    "liczbaStron": [48],
+    "rokWydania": [2020],
+    "wydawnictwo": ["Arystoteles"]
+}
+
+
+ksiazka3 = {
+    "autor": "Joanne Kathleen Rowling",
+    "tytuł": "Harry Potter i Kamień Filozoficzny",
+    "gatunek": "fantasy",
+    "liczbaStron": [328],
+    "rokWydania": [2023],
+    "wydawnictwo": ["Media rodzina"]
+}
+
+biblioteka = [ksiazka1, ksiazka2, ksiazka3]
+
+
+while True:
+    print("---"*15)
+    print("w - wyjdź z programu")
+    print("i - informacje o książkach")
+    print("nd - nadpisz dane")
+    print("ew - edytuj wydanie")
+    print("u - usuwanie")
+    print("---"*15)
+    inp = input().lower()
+    if 'w' == inp:
+        break
+    elif 'i' == inp:
+        biblioteka_informacje(ksiazka1, ksiazka2, ksiazka3)
+    elif 'nd' == inp:
+        edycja(ksiazka1, ksiazka2, ksiazka3)
+    elif 'ew' == inp:
+        edytuj_wydanie(ksiazka1, ksiazka2, ksiazka3)
+    elif 'u' == inp:
+        usuwanie(ksiazka1, ksiazka2, ksiazka3)
+    else:
+        print("Program zkonczyl dziłanie")
+        break
+    print("edytuj_wydanie - zakonczylo dzialnie")
+
+
+def słownik1(ksiazka1):
+    for k, v in ksiazka1.items():
+        print(f"klucz - {k} ")
+        print(f"wartość - {v}")
+
+
+def słownik2(ksiazka2):
+    for k, v in ksiazka2.items():
+        print(f"klucz - {k} ")
+        print(f"wartość - {v}")
+
+
+def słownik3(ksiazka3):
+    for k, v in ksiazka3.items():
+        print(f"klucz - {k} ")
+        print(f"wartość - {v}")
+
+
+def edycja(ksiazka1, ksiazka2, ksiazka3):
+    print("Wybierz słownik który chcesz nadpisać (1,2,3)")
+    inp = input().lower()
+    if inp == "1":
+        print("---" * 15)
+        print("wprowadz kategorie jaka chcesz edytować")
+        print("---" * 15)
+        słownik1(ksiazka1)
+        print("---" * 15)
+        inp = input()
+        ksiazka1[inp] = input("Podaj nowe dane")
+    elif inp == "2":
+        print("---" * 15)
+        print("wprowadz kategorie jaka chcesz edytować")
+        print("---" * 15)
+        słownik2(ksiazka2)
+        print("---" * 15)
+        inp = input()
+        ksiazka2[inp] = input("Podaj nowe dane")
+    elif inp == "3":
+        print("---" * 15)
+        print("wprowadz katogarię jaką chcesz edytować")
+        print("---" * 15)
+        słownik3(ksiazka3)
+        print("---" * 15)
+        inp = input()
+        ksiazka3[inp] = input("Podaj nowe dane")
+
+
+def biblioteka_informacje(ksiazka1, ksiazka2, ksiazka3):
+    while True:
+        print("1 - ksiazka1")
+        print("2 - ksiazka2")
+        print("3 - ksiazka3")
+        inp = input().lower()
+        if inp == "1":
+            słownik1(ksiazka1)
+        elif inp == "2":
+            słownik2(ksiazka2)
+        elif inp == "3":
+            słownik3(ksiazka3)
+        else:
+            break
+
+
+def usuwanie(ksiazka1, ksiazka2, ksiazka3):
+    print("Wybierz słownik który chcesz usunąć(1,2,3)")
+    inp = input().lower()
+    if inp == "1":
+        print("---" * 15)
+        del ksiazka1["tytuł", "liczbaStron", "autor",  "gatunek","rokWydania","wydawnictwo"]
+    elif inp == "2":
+        print("---" * 15)
+        del ksiazka2["tytuł", "liczbaStron", "autor",  "gatunek","rokWydania","wydawnictwo"]
+    elif inp == "3":
+        print("---" * 15)
+        del ksiazka3["tytuł", "liczbaStron", "autor",  "gatunek","rokWydania","wydawnictwo"]
+
+
+def edytuj_wydanie(dc):
+    print("Edytuj wydanie")
+    print("liczbaStron - a")
+    print("rokWydania - b")
+    print("wydawnictwo - c")
+    inp = input()
+    if inp == 'a':
+        edycja_listy(dc['liczbaStron'])
+    elif inp == 'b':
+        edycja_listy(dc['rokWydania'])
+    elif inp == 'c':
+        edycja_listy(dc['wydawnictwo'])
+    print("edytuj_wydanie - zakonczylo dzialnie")
+
+
+def edycja(dc):
+    print("wprowadz kategorie jaką chcesz edytować")
+    print("==="*25)
+    inf(dc)
+    print("==="*25)
+    inp = input()
+    dc[inp] = input("Podaj nowe dane")
