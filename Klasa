@@ -1,0 +1,9 @@
+def usun_ocene(self, ocena, przedmiot):
+        if przedmiot == "matematyka":
+            if ocena in self.oceny_mat:
+                self.oceny_mat.remove(ocena)
+                self.srednia_ocen_mat = self.oblicz_srednia(po.oceny_mat)
+        elif przedmiot == "angielski":
+            if ocena in self.oceny_ang:
+                self.oceny_ang.remove(ocena)
+                self.srednia_ocen_ang = self.oblicz_srednia(self.oceny_ang)
