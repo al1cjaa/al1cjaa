@@ -1,0 +1,71 @@
+A = {1,2,3,4,5}
+B = {4,5,6,7}
+
+
+# 1.Napisz funkcję która zwróci różnicę zbiorów.
+
+
+def zad1(A:set, B:set) -> set:
+    return A - B
+print(zad1(A,B))
+ 
+# 2.Napisz funkcję która zwróci sumę zbiorów.
+
+
+def zad2(A:set, B:set) -> set:
+    return A | B
+print(zad2(A,B))
+
+
+# 3.Napisz funkcję która zwróci część wspólną zbiorów.
+
+
+def zad3(A:set, B:set) -> set:
+    return A & B
+print(zad3(A,B))
+
+
+# 4.Napisz funkcję która zwróci różnicę symetryczną zbioru.
+
+
+def zad4(A:set, B:set) -> set:
+    return A.symmetric_difference(B)
+print(zad4(A,B))
+
+# 5.Napisz funkcję która wygeneruje zbiór zawierający liczby z przedziału od m do n.
+
+
+def zad5(m:int=0,n:int=0) -> set:
+    lst = [i for i in range(m,n+1)]
+    return set(lst)
+print(zad5(1,20))
+
+
+# 6.Napisz funkcję która wygeneruje set z k liścia liczb z liczbami z przedziału m i n
+from random import randint
+def zad6(k:int=0, m:int=0,n:int=0) -> set:
+    s = set()
+    while len(s) != k:
+        number = randint(m,n)
+        if number not in s:
+            s.add(number)
+    # 5.Napisz funkcję która wygeneruje zbiór zawierający liczby z przedziału od m do n.
+
+
+def zad5(m:int=0,n:int=0) -> set:
+    lst = [i for i in range(m,n+1)]
+    return set(lst)
+print(zad5(1,20))
+
+
+# 6.Napisz funkcję która wygeneruje set z k liścia liczb z liczbami z przedziału m i n
+from random import randint
+def zad6(k:int=0, m:int=0,n:int=0) -> set:
+    s = set()
+    while len(s) != k:
+        number = randint(m,n)
+        if number not in s:
+            s.add(number)
+    return s
+print(zad6(10,-10,10))
+
